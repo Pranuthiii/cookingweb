@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ Yummy Bites – Interactive Cooking</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #fffaf0;
+            padding: 20px;
+            transition: background 0.3s ease-in-out;
+        }
+        h1 {
+            color: #ff6347;
+            font-size: 42px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .cuisine-section {
+            margin: 20px auto;
+            padding: 15px;
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+        .cuisine-button {
+            background-color: #ffa07a;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .cuisine-button:hover {
+            background-color: #ff4500;
+            transform: scale(1.1);
+        }
+        .recipe-container {
+            display: none;
+            margin-top: 15px;
+        }
+        .recipe-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🍽️ Welcome to Yummy Bites! 🎉</h1>
+    <p style="font-size: 20px;">Select a cuisine to explore delicious recipes! 😍</p>
+
+    <div class="cuisine-section">
+        <button class="cuisine-button" onclick="showCuisine('chinese')">🥡 Chinese</button>
+        <button class="cuisine-button" onclick="showCuisine('indian')">🍛 Indian</button>
+        <button class="cuisine-button" onclick="showCuisine('italian')">🍝 Italian</button>
+        <button class="cuisine-button" onclick="showCuisine('mexican')">🌮 Mexican</button>
+    </div>
+
+    <div id="recipeDisplay" class="recipe-container">
+        <h2 id="recipeTitle"></h2>
+        <img id="recipeImage" class="recipe-img" src="" alt="">
+        <p id="recipeDetails"></p>
+    </div>
+
+    <script>
+        const recipes = {
+            chinese: {
+                title: "Fried Rice",
+                img: "https://www.recipetineats.com/wp-content/uploads/2022/08/Vegetable-Fried-Rice_2.jpg",
+                details: "👩‍🍳 Ingredients: Rice, soy sauce, veggies, egg.<br> 🥄 Instructions: Stir-fry everything in a pan. Enjoy!"
+            },
+            indian: {
+                title: "Butter Chicken",
+                img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/butter-chicken-recipe.jpg",
+                details: "👩‍🍳 Ingredients: Chicken, butter, tomato sauce, spices.<br> 🥄 Instructions: Cook chicken in spices, add butter & sauce."
+            },
+            italian: {
+                title: "Pasta Alfredo",
+                img: "https://www.spendwithpennies.com/wp-content/uploads/2020/09/Fettuccine-Alfredo-SpendWithPennies-6.jpg",
+                details: "👩‍🍳 Ingredients: Pasta, cream, cheese, garlic.<br> 🥄 Instructions: Boil pasta, mix with sauce, serve hot!"
+            },
+            mexican: {
+                title: "Tacos",
+                img: "https://www.simplyrecipes.com/thmb/-_hpdpgcIVBoZnP5ZTRDkU6PtPE=/1500x0/filters:no_upscale()/Simply-Recipes-Beef-Tacos-LEAD-06.jpg",
+                details: "👩‍🍳 Ingredients: Tortilla, meat, cheese, salsa.<br> 🥄 Instructions: Fill tortilla, fold & eat!"
+            }
+        };
+
+        function showCuisine(cuisine) {
+            let display = document.getElementById("recipeDisplay");
+            document.getElementById("recipeTitle").innerHTML = recipes[cuisine].title;
+            document.getElementById("recipeImage").src = recipes[cuisine].img;
+            document.getElementById("recipeDetails").innerHTML = recipes[cuisine].details;
+            display.style.display = "block";
+        }
+    </script>
+</body>
+</html>
